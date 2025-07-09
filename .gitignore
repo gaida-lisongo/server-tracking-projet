@@ -1,0 +1,13 @@
+# Fichiers et dossiers à ignorer
+node_modules/
+*.log
+.env
+.DS_Store
+Thumbs.db
+
+# Dossier backend (ne pas déployer sur GitHub Pages)
+backend/
+
+# Fichiers de développement
+*.tmp
+*.temp
