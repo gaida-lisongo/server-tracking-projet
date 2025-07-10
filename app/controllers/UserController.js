@@ -250,9 +250,9 @@ class UserController extends Controller {
     async createActivite(data){
         try {
             // Validation des données requises
-            const { id_resipiendaire, date_activité, designation, statut, id_etape } = data;
+            const { id_resipiendaire, date_activite, designation, statut, id_etape } = data;
             
-            if (!id_resipiendaire || !date_activité || !designation || !statut || !id_etape) {
+            if (!id_resipiendaire || !date_activite || !designation || !statut || !id_etape) {
                 throw new Error('Données manquantes pour créer l\'activité');
             }
 

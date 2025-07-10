@@ -201,7 +201,7 @@ class UserModel extends Model {
 
     async getActivitesByEtudiantId(id) {
         try {
-            const query = `SELECT *
+            const query = `SELECT a.*, r.role
                 FROM activite_resipiendaire a
                 INNER JOIN resipiendaire r ON r.id = a.id_resipiendaire
                 WHERE r.id_etudiant = ?`;
@@ -270,12 +270,12 @@ class UserModel extends Model {
     }
 
     async createActivite(data){
-        //`activite_resipiendaire`(`id`, `id_resipiendaire`, `date_activité`, `designation`, `statut`, `id_etape`)
+        //`activite_resipiendaire`(`id`, `id_resipiendaire`, `date_activite`, `designation`, `statut`, `id_etape`)
         try {
-            const { id_resipiendaire, date_activité, designation, statut, id_etape } = data;
-            const query = `INSERT INTO activite_resipiendaire (id_resipiendaire, date_activité, designation, statut, id_etape)
+            const { id_resipiendaire, date_activite, designation, statut, id_etape } = data;
+            const query = `INSERT INTO activite_resipiendaire (id_resipiendaire, date_activite, designation, statut, id_etape)
                            VALUES (?, ?, ?, ?, ?)`;
-            const result = await this.db.insert(query, [id_resipiendaire, date_activité, designation, statut, id_etape]);
+            const result = await this.db.insert(query, [id_resipiendaire, date_activite, designation, statut, id_etape]);
             return result;
         } catch (error) {
             console.error('Error creating activite:', error);

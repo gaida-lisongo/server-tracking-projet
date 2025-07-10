@@ -24,7 +24,10 @@ class PromotionModel extends SectionModel {
             this.programmes = sections.map(section => {
                 return {
                     ...section,
-                    promotions: promotions.filter(promo => promo.id_section === section.id)
+                    promotions: promotions.filter(promo => {
+                        console.log(`Debugging promotion section match: ${promo.id_section} === ${section.id} : `, promo);
+                        return promo.id_section === section.id
+                    })
                 };
             });
         } catch (error) {
