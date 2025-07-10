@@ -118,6 +118,48 @@ router.post('/commande/note', authenticateToken, async (req, res) => {
 });
 
 /**
+ * POST /api/users/commande/stage
+ * Créer une commande Stage
+ */
+router.post('/commande/stage', authenticateToken, async (req, res) => {
+    try {
+        const result = await userController.commandeStage(req.body);
+        
+        if (result.success) {
+            res.status(201).json(result);
+        } else {
+            res.status(400).json(result);
+        }
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Erreur serveur lors de la création de la commande Stage'
+        });
+    }
+});
+
+/**
+ * POST /api/users/activite
+ * Créer une activité
+ */
+router.post('/activite', authenticateToken, async (req, res) => {
+    try {
+        const result = await userController.createActivite(req.body);
+        
+        if (result.success) {
+            res.status(201).json(result);
+        } else {
+            res.status(400).json(result);
+        }
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Erreur serveur lors de la création de l\'activité'
+        });
+    }
+});
+
+/**
  * GET /api/users/:id/profile
  * Récupérer le profil complet d'un utilisateur
  */

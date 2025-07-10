@@ -269,6 +269,20 @@ class UserModel extends Model {
         }
     }
 
+    async createActivite(data){
+        //`activite_resipiendaire`(`id`, `id_resipiendaire`, `date_activité`, `designation`, `statut`, `id_etape`)
+        try {
+            const { id_resipiendaire, date_activité, designation, statut, id_etape } = data;
+            const query = `INSERT INTO activite_resipiendaire (id_resipiendaire, date_activité, designation, statut, id_etape)
+                           VALUES (?, ?, ?, ?, ?)`;
+            const result = await this.db.insert(query, [id_resipiendaire, date_activité, designation, statut, id_etape]);
+            return result;
+        } catch (error) {
+            console.error('Error creating activite:', error);
+            throw error;
+        }
+    }
+
     async updateUser(id, col, value){
         try {
             const query = `UPDATE etudiant SET ${col} = ? WHERE id = ?`;

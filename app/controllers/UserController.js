@@ -246,6 +246,33 @@ class UserController extends Controller {
             };
         }
     }
+
+    async createActivite(data){
+        try {
+            // Validation des données requises
+            const { id_resipiendaire, date_activité, designation, statut, id_etape } = data;
+            
+            if (!id_resipiendaire || !date_activité || !designation || !statut || !id_etape) {
+                throw new Error('Données manquantes pour créer l\'activité');
+            }
+
+            // Créer l'activité via le modèle
+            const result = await this.model.createActivite(data);
+
+            return {
+                success: true,
+                message: 'Activité créée avec succès',
+                data: result
+            };
+
+        } catch (error) {
+            return {
+                success: false,
+                message: error.message
+            };
+        }
+    }
+
 }
 
 module.exports = UserController;
