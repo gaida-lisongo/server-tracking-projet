@@ -12,6 +12,9 @@ require('dotenv').config();
 // Import de la base de données
 const db = require('./app/utils/db');
 
+// Import des routes API
+const apiRoutes = require('./app/routes');
+
 // Configuration
 const PORT = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-jwt-key';
@@ -68,7 +71,7 @@ app.get('/', (req, res) => {
         endpoints: {
             health: '/health',
             socket: '/socket.io',
-            api: '/api (à venir)'
+            api: '/api'
         }
     });
 });
@@ -96,6 +99,9 @@ app.get('/health', async (req, res) => {
         });
     }
 });
+
+// Configuration des routes API
+app.use('/api', apiRoutes);
 
 // Gestion des événements Socket.IO
 io.on('connection', (socket) => {
