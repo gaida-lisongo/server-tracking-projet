@@ -7,8 +7,10 @@ class PromotionController extends Controller {
         console.log("PromotionController initialized");
         this.model = Promotion;
     }
-
-    // Autres méthodes pour gérer les promotions peuvent être ajoutées ici
+    
+    fetchPromotions(){
+        return this.model.programmes
+    }
 }
 
 module.exports = PromotionController;

@@ -269,6 +269,34 @@ class UserModel extends Model {
         }
     }
 
+    async updateUser(id, col, value){
+        try {
+            const query = `UPDATE etudiant SET ${col} = ? WHERE id = ?`;
+            const result = await this.db.update(query, [value, id]);
+            if (result.success) {
+                // Update the local user object if it exists
+                const etudiantIndex = this.etudiants.findIndex(e => e.id === id);
+                if (etudiantIndex !== -1) {
+                    // Handle nested properties in profile
+                    if (col.includes('.')) {
+                        const [parent, child] = col.split('.');
+                        if (parent === 'profile') {
+                            this.etudiants[etudiantIndex].profile[child] = value;
+                        }
+                    } else {
+                        // Direct property update
+                        this.etudiants[etudiantIndex][col] = value;
+                    }
+                }
+                return { success: true, message: 'User updated successfully' };
+            }
+            return { success: false, message: 'Failed to update user' };
+        } catch (error) {
+            console.error('Error updating user:', error);
+            throw error;
+        }
+    }
+
 }
 
 module.exports = UserModel;
