@@ -1,6 +1,8 @@
 const express = require('express');
 const userRoutes = require('./userRoutes');
 const promotionRoutes = require('./promotionRoutes');
+const tuteurRoutes = require('./tuteurRoutes');
+const directeurRoutes = require('./directeurRoutes');
 
 const router = express.Router();
 
@@ -15,6 +17,12 @@ router.use('/users', userRoutes);
 // Routes promotions/programmes - /api/promotions/*
 router.use('/promotions', promotionRoutes);
 
+// Routes tuteur
+router.use('/tuteur', tuteurRoutes);
+
+// Routes directeur
+router.use('/directeur', directeurRoutes);
+
 // Route de test de l'API
 router.get('/health', (req, res) => {
     res.status(200).json({
@@ -23,7 +31,9 @@ router.get('/health', (req, res) => {
         timestamp: new Date().toISOString(),
         routes: {
             users: '/api/users',
-            promotions: '/api/promotions'
+            promotions: '/api/promotions',
+            tuteur: '/api/tuteur',
+            directeur: '/api/directeur'
         }
     });
 });
