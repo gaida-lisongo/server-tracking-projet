@@ -68,7 +68,7 @@ class UserController extends Controller {
 
             // Vérifier le mot de passe
             const hashedPassword = this.cryptePassword(secure);
-            if (etudiant.profile.mdp !== hashedPassword) {
+            if (etudiant.profile.secure !== hashedPassword) {
                 throw new Error('Mot de passe incorrect');
             }
 
@@ -221,7 +221,7 @@ class UserController extends Controller {
             };
         }
     }
-    
+
     // Ajouter une méthode pour créer une commande Stage
     async commandeStage(data){
         try {
