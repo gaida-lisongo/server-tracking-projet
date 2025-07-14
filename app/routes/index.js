@@ -6,10 +6,6 @@ const directeurRoutes = require('./directeurRoutes');
 
 const router = express.Router();
 
-/**
- * Configuration centralisée des routes de l'API
- * Structure: /api/{module}/{endpoint}
- */
 
 // Routes utilisateurs - /api/users/*
 router.use('/users', userRoutes);
