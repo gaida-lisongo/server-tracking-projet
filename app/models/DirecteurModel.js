@@ -59,3 +59,5 @@ class DirecteurModel extends TuteurModel {
         }
     }
 }
+
+module.exports = DirecteurModel;
