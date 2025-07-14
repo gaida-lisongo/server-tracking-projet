@@ -13,13 +13,10 @@ const router = express.Router();
 
 // Routes utilisateurs - /api/users/*
 router.use('/users', userRoutes);
-
 // Routes promotions/programmes - /api/promotions/*
 router.use('/promotions', promotionRoutes);
-
 // Routes tuteur
 router.use('/tuteur', tuteurRoutes);
-
 // Routes directeur
 router.use('/directeur', directeurRoutes);
 
