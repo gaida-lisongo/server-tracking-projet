@@ -1,7 +1,7 @@
 const express = require('express');
+const tuteurRoutes = require('./tuteurRoutes');
 const userRoutes = require('./userRoutes');
 const promotionRoutes = require('./promotionRoutes');
-const tuteurRoutes = require('./tuteurRoutes');
 const directeurRoutes = require('./directeurRoutes');
 
 const router = express.Router();
