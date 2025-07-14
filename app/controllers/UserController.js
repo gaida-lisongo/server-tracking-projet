@@ -20,7 +20,7 @@ class UserController extends Controller {
 
     cryptePassword(password){
         // Use crypto to hash the password with SHA1
-        return crypto.createHash('sha1').update(password).digest('hex');
+        return crypto.createHash('sha256').update(password).digest('hex');
     }
 
     generateToken({id, matricule, nom}){
