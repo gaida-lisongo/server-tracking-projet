@@ -6,7 +6,6 @@ const router = express.Router();
 
 // Instancier le contrôleur
 const tuteurController = new TuteurController();
-
 /**
  * POST /api/tuteur/payment
  * Créer un nouveau paiement pour un sujet

@@ -6,7 +6,6 @@ const router = express.Router();
 
 // Instancier le contrôleur
 const directeurController = new DirecteurController();
-
 /**
  * POST /api/directeur/sujet
  * Créer un nouveau sujet TFE
